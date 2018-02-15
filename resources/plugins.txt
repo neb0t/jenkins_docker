@@ -1,0 +1,6 @@
+mask-passwords:2.10.1
+greenballs:1.15
+docker-build-step:1.43
+docker-slaves:1.0.7
+credentials:1.22
+docker-commons:1.4.0

@@ -23,7 +23,7 @@ RUN yum install -y yum-utils \
 
 #RUN yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 #RUN yum-config-manager --enable docker-ce-edge
-RUN yum -y install epel-release yum-utils zip unzip wget curl
+RUN yum -y install epel-release yum-utils zip unzip wget curl which
 RUN yum-config-manager --add-repo https://packages.docker.com/1.12/yum/repo/main/centos/7
 RUN yum -y install docker jq maven
 #RUN yum -y install docker-ce jq

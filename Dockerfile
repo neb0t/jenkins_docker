@@ -11,7 +11,6 @@ ENV JAVA_PATH 2f38c3b165be4555a1fa6e98c45e0808
 ENV JAVA_VERSION 8
 ENV JAVA_UPDATE 161
 ENV JAVA_BUILD 12
-ENV KUBERNETES_VERSION=v1.5.2
 
 VOLUME /var/jenkins_home
 
@@ -27,13 +26,6 @@ RUN yum -y install epel-release yum-utils zip unzip wget curl which
 RUN yum-config-manager --add-repo https://packages.docker.com/1.12/yum/repo/main/centos/7
 RUN yum -y install docker jq maven
 #RUN yum -y install docker-ce jq
-
-# Set up Kubernetes
-RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$KUBERNETES_VERSION/bin/linux/amd64/kubectl
-RUN chmod +x ./kubectl
-RUN mv ./kubectl /usr/local/bin/kubectl
-# Configure access to the Kubernetes Cluster
-ADD install/config ~/.kube
 
 ENV TINI_VERSION 0.16.1
 ENV TINI_SHA 5e01734c8b2e6429a1ebcc67e2d86d3bb0c4574dd7819a0aff2dca784580e040

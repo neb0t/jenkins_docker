@@ -7,10 +7,10 @@ ENV JENKINS_HOME /var/jenkins_home
 ENV JENKINS_SLAVE_AGENT_PORT ${SLAVE_PORT}
 ENV JENKINS_OPTS "-Djenkins.install.runSetupWizard=false"
 ENV JENKINS_UC https://updates.jenkins-ci.org
-ENV JAVA_PATH 2f38c3b165be4555a1fa6e98c45e0808
+ENV JAVA_PATH 512cd62ec5174c3487ac17c61aaa89e8
 ENV JAVA_VERSION 8
-ENV JAVA_UPDATE 161
-ENV JAVA_BUILD 12
+ENV JAVA_UPDATE 171
+ENV JAVA_BUILD 11
 
 VOLUME /var/jenkins_home
 
@@ -42,10 +42,10 @@ COPY init.groovy /usr/share/jenkins/ref/init.groovy.d/tcp-slave-agent-port.groov
 
 # jenkins version being bundled in this docker image
 ARG JENKINS_VERSION
-ENV JENKINS_VERSION ${JENKINS_VERSION:-2.89.4}
+ENV JENKINS_VERSION ${JENKINS_VERSION:-2.107.3}
 
 # jenkins.war checksum, download will be validated using it
-ARG JENKINS_SHA=1d893aa30e49a3130e4f90268044dafb34f7c32b573970f2acca8c2c821f9b53
+ARG JENKINS_SHA=17a9e509bec5b16bde5b50bc7f59d5f1e458a55fe433deb86fd73b865bf89ab8
 # Can be used to customize where jenkins.war get downloaded from
 ARG JENKINS_URL=https://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-war/${JENKINS_VERSION}/jenkins-war-${JENKINS_VERSION}.war
 
@@ -73,3 +73,4 @@ COPY resources/init.groovy.d/ /usr/share/jenkins/ref/init.groovy.d/
 RUN /usr/local/bin/plugins.sh /usr/share/jenkins/ref/plugins.txt
 
 ENTRYPOINT ["/bin/tini", "--", "/usr/local/bin/jenkins.sh"]
+
